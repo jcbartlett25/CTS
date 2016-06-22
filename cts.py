@@ -7,11 +7,18 @@ clock_list = []
 count = int(raw_input("How many clockings did you have? \n(One clocking is one clock in and a corresponding clock out): "))
 for n in range(0,count):
 	c_time = (raw_input("Clock in %d: " % (n + 1)), raw_input("Clock out %d: " % (n + 1)))
-	if len(c_time[0]) == 4 and len(c_time[1]) == 4 and c_time[0].isdigit() and c_time[1].isdigit() and int(c_time[0]) < int(c_time[1]):
-		clock_list.append(c_time)
-	else:
-		print "I'm sorry one (or both!) of your times was not a valid time,\n or they were not a valid pair of times, please enter valid times. Also note that the times do not loop (sorry to you all-nighters)."
+	while (not(len(c_time[0]) == 4 and 
+		len(c_time[1]) == 4 and 
+		c_time[0].isdigit() and 
+		c_time[1].isdigit() and 
+		int(c_time[0]) < int(c_time[1]))):
+		print "I'm sorry one (or both!) of your times was not a valid time,"
+		print "or they were not a valid pair of times, please enter valid times."
+		print "Also note that the times do not loop (sorry to you all-nighters)."
+		c_time = (raw_input("Clock in %d: " % (n + 1)), raw_input("Clock out %d: " % (n + 1)))
+	clock_list.append(c_time)
 print 'Calculating...'
+
 total = 0
 workers_fine = False
 for n in clock_list:
@@ -34,8 +41,6 @@ minutes = (total/60)%60
 print 'You worked %d hour(s) and %d minute(s) today' % (hours, minutes) 
 if workers_fine:
 	print 'Warning: You worked longer than 5 hours today without a break'
-
-print hours
 if hours == 8 and minutes > 0 or hours > 8:
 	print 'You worked %d hour(s) and %d minute(s) overtime today' % ((hours - 8), (minutes))
 
