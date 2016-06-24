@@ -84,6 +84,7 @@ elif count % 2 != 0 and count > 0:
 		moreSeconds = 28800 - total
 		moreHours = moreSeconds/60/60
 		moreMinutes = (moreSeconds/60)%60
+		print 'You need to work %d more hour(s) and %d more minute(s) today' % (moreHours, moreMinutes)
 	if seconds2 - seconds1 > 18000:
 		print 'Warning: You worked longer than 5 hours today without a break'
 	if hours == 8 and minutes > 0 or hours > 8:
