@@ -21,16 +21,12 @@ print 'Calculating...'
 
 total = 0
 workers_fine = False
-for n in clock_list:
-	hours1 = int(n[0][:2])
-	mins1 = int(n[0][-2:])
-	hours2 = int(n[1][:2])
-	mins2 = int(n[1][-2:])
-	hours1 = hours1 * 60 * 60
-	mins1 = mins1 * 60
+for n in clock_list: 
+	hours1 = int(n[0][:2]) * 60 * 60
+	mins1 = int(n[0][-2:]) * 60
 	seconds1 = hours1 + mins1
-	hours2 = hours2 * 60 * 60
-	mins2 = mins2 * 60
+	hours2 = int(n[1][:2]) * 60 * 60
+	mins2 = int(n[1][-2:]) * 60
 	seconds2 = hours2 + mins2
 	total += (seconds2 - seconds1)
 	if seconds2 - seconds1 > 18000:
